@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BestPeersTest</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body>
+  <div class="container">
+
+    <% if user_signed_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+         <li class="nav-item active">
+          <a class="nav-link btn btn-sm" href="/" type="button">Home</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link btn btn-sm" href="<%= pending_invitations_homes_path%>" type="button">Pending Invitations</a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link btn btn-sm" href="<%= friends_home_path(current_user)%>" type="button">My Friends List</a>
+        </li>
+
+      <li class="nav-item active">
+        <%=  link_to('Logout', destroy_user_session_path, method: :delete,class: "btn btn-danger") %>
+      </li>
+
+    </ul>
+    <% end %>
+
+
+  </nav>
+  <%= yield %>
+</div>
+</div>
+</body>
+</html>
